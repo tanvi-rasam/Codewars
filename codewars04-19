@@ -1,0 +1,71 @@
+Q1] You take your son to the forest to see the monkeys. You know that there are a certain number there (n), but your son is too young to just appreciate the full number, he has to start counting them from 1.
+
+As a good parent, you will sit and count with him. Given the number (n), populate an array with all numbers up to and including that number, but excluding zero.
+
+For example:
+
+monkeyCount(10) // --> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+monkeyCount(1) // --> [1]
+
+Solution-
+
+function monkeyCount(n) {
+// your code here
+  return [...new Array(n)].map((x,index) => index + 1);
+  
+  return Array.from({length: n}, (v,i) => i + 1);
+  
+  return [...Array(n + 1).keys()].slice(1);
+}
+
+Q2] Write a function which calculates the average of the numbers in a given list.
+
+Note: Empty arrays should return 0.
+
+Solution-
+function find_average(array) {
+  // your code here
+  return array.reduce((acc, currVal) => acc + currVal) / array.length;
+}
+
+Q3] It's bonus time in the big city! The fatcats are rubbing their paws in anticipation... but who is going to make the most money?
+
+Build a function that takes in two arguments (salary, bonus). Salary will be an integer, and bonus a boolean.
+
+If bonus is true, the salary should be multiplied by 10. If bonus is false, the fatcat did not make enough money and must receive only his stated salary.
+
+Return the total figure the individual will receive as a string prefixed with "£"
+
+Solution-
+
+function bonusTime(salary, bonus) {
+// your code here
+  return "£" + (bonus ? salary * 10 : salary);
+}
+
+Q4 ] You will be given an array a and a value x. All you need to do is check whether the provided array contains the value.
+
+Array can contain numbers or strings. X can be either.
+
+Return true if the array contains the value, false if not.
+
+Solution-
+function check(a, x) {
+  // your code here
+  return a.filter(a => a === x).length ? true : false;
+  
+  return a.includes(x);
+  
+Q5] A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, will he survive?
+
+Return True if yes, False otherwise :)
+
+function hero(bullets, dragons){
+//Get Coding!
+  return dragons * 2 <= bullets ? true : false;
+  
+   return dragons * 2 <= bullets;
+}
+  
+}
+

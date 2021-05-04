@@ -1,0 +1,86 @@
+Q1] Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+Examples
+GetSum(1, 0) == 1   // 1 + 0 = 1
+GetSum(1, 2) == 3   // 1 + 2 = 3
+
+Solution
+function getSum( a,b )
+{
+   if(a === b) {
+     return a;
+   }
+   return a > b ? b + getSum(a,b + 1) : a + getSum(a + 1,b);
+  
+}
+
+
+function getSum( a,b )
+{
+   return ((a + b) * (Math.abs(a - b) + 1)) / 2;
+}
+
+Q2] Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+
+Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+Examples
+maskify("4556364607935616") == "############5616"
+maskify(     "64607935616") ==      "#######5616"
+maskify(               "1") ==                "1"
+maskify(                "") ==                 ""
+
+Solution-
+
+function maskify(cc) {
+    if (cc.length < 4) {
+      return cc
+    }
+    return '#'.repeat(cc.length - 4) + cc.slice(-4);
+}
+
+function maskify(cc) {
+  return cc.replace(/.(?=....)/g, '#');
+}
+
+Q3] In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+
+At the end of the first year there will be: 
+1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+At the end of the 2nd year there will be: 
+1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+
+At the end of the 3rd year there will be:
+1141 + 1141 * 0.02 + 50 => 1213
+
+It will need 3 entire years.
+
+Solution-
+function nbYear(p0, percent, aug, p) {
+  if (p0 >= p) {
+    return 0;
+  }
+  return 1 + nbYear(p0 + p0 * percent / 100 + aug, percent, aug, p);
+  
+}
+
+Q4] Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
+
+For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+
+[10, 343445353, 3453445, 3453545353453] should return 3453455.
+
+Solution-
+function sumTwoSmallestNumbers(numbers) {  
+  //Code here
+  return numbers.sort((a,b) => a - b).slice(0,2).reduce((a,c) => a + c);
+}
+
+function sumTwoSmallestNumbers(numbers) {  
+  var [ a, b ] = numbers.sort((a, b) => a - b)
+  return a + b
+}
+

@@ -1,0 +1,51 @@
+Q1] Clock shows h hours, m minutes and s seconds after midnight.
+
+Your task is to write a function which returns the time since midnight in milliseconds.
+
+Example:
+h = 0
+m = 1
+s = 1
+
+result = 61000
+
+Solutions -
+
+function past(h, m, s){
+  //1
+  return ((h * 60 * 60) + (m * 60) + s) * 1000 
+  
+  //2:
+   //currTime in ms - midnight time in ms
+  return Math.round(new Date().setHours(h,m,s) - new Date().setHours(0,0,0)); 
+}
+
+Q2] Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
+
+function fakeBin(x){
+  //1:
+  //return x.split('').map(x1 => x1 >= 5 ? 1 : 0).join('');
+  
+  //2:
+  return x ? (x[0] >= 5 ? '1' : '0') + fakeBin(x.slice(1)) : ''; 
+}
+
+//3:
+  return x.replace(/[0-4]/g, '0').replace(/[5-9]/g, '1');
+  
+Q3] Description:
+Make a simple function called greet that returns the most-famous "hello world!".
+
+Style Points
+Sure, this is about as easy as it gets. But how clever can you be to create the most creative hello world you can think of? What is a "hello world" solution you would want to show your friends?
+
+Solution-
+
+// Write a function "greet" that returns "hello world!"
+//1:
+//const greet = () => 'hello world!';
+
+//2:
+function greet() {
+  return 'hello world!';
+}

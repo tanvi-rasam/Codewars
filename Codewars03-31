@@ -1,0 +1,71 @@
+Q1] Very simple, given a number, find its opposite.
+
+	Examples:
+
+	1: -1
+	14: -14
+	-34: 34
+
+Solutions-
+
+function opposite(number) {
+  //1:
+  //return number*(-1);
+  
+  // 2:
+  return -number;
+  
+}    
+
+
+Q2] In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+
+Example:
+
+makeNegative(1); // return -1
+makeNegative(-5); // return -5
+
+
+Solutions-
+
+function makeNegative(num) {
+  //1:
+  //return num>0? -num: num;
+  
+  //2:
+  return -Math.abs(num);
+  
+}
+
+
+Q3] It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+
+Solutions-
+
+function removeChar(str){
+  //1:
+ // return str.slice(1,str.length-1);
+
+  //2:
+  return str.slice(1,-1);
+
+};
+
+
+Q4] Write a function called repeat_string which repeats the given string str exactly count times.
+
+repeatStr(6, "I") // "IIIIII"
+repeatStr(5, "Hello") // "HelloHelloHelloHelloHello"
+
+Solutions-
+function repeatStr (n, s) {
+  //1:
+//   if (n ==0) {
+//     return '';
+//   }
+//   return s + repeatStr(n-1,s);
+  
+// 2:
+  return s.repeat(n);
+
+}

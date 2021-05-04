@@ -1,0 +1,64 @@
+Q1] You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+#Examples:
+
+Kata.getMiddle("test") should return "es"
+
+Kata.getMiddle("testing") should return "t"
+
+Kata.getMiddle("middle") should return "dd"
+
+Kata.getMiddle("A") should return "A"
+
+Solutions-
+
+function getMiddle(s)
+{
+   return s.length % 2 == 0 ? s[s.length / 2 - 1] + s[s.length / 2] : s[parseInt(s.length / 2)]; 
+   return s.slice((s.length - 1) / 2, s.length / 2 + 1)
+}
+
+Q2] An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+
+isIsogram("Dermatoglyphics") == true
+isIsogram("aba") == false
+isIsogram("moOse") == false // -- ignore letter case
+
+Solutions-
+function isIsogram(str){
+  //...
+  var res = str.toLowerCase().split('').sort();
+  for (var i = 1; i < res.length; i++) {
+    if (res[i] == res[i-1]) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+function isIsogram(str){
+  //...
+  return new Set(str.toLowerCase()).size === str.length;
+}
+
+
+Q3] Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+
+Solution-
+var isSquare = function(n){
+  return n >= 0 && Math.sqrt(n) % 1 === 0;
+}
+
+Q4] Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types.
+Solution-
+
+function findShort(s) {
+  return Math.min(...s.split(' ').map(x => x.length));
+  
+}

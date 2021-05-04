@@ -1,0 +1,51 @@
+Q1]  Complete the solution so that it reverses the string passed into it.
+
+'world'  =>  'dlrow'
+
+
+Solutions-
+
+function solution(str){
+// 1: Recursive way
+  return str ? (str.length === 1? str[0]: str.slice(-1) + solution(str.slice(0,-1))) : str
+
+// 2: Recursive way
+  return str ? solution(str.substr(1)) + str[0] : ""
+  
+// splitting into array, reverse and join
+  //return str.split('').reverse().join('')
+  
+  
+}
+
+Q2] Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+
+For example:
+
+summation(2) -> 3
+1 + 2
+
+summation(8) -> 36
+1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
+
+Solutions-
+var summation = function (num) {
+   // 1: Recursive 
+ //return num ? num +  summation(num-1) : 0
+  
+  // 2: Formula
+  return num * (num+1)/2;
+}
+
+
+Q3] Simple, remove the spaces from the string, then return the resultant string.
+
+Solutions:
+
+function noSpace(x){
+  //1:
+  return x.split(' ').join('');
+  
+  // 2: with regex
+  return x.replace(/\s/g,'');
+}

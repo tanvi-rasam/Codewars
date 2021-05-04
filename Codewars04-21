@@ -1,0 +1,87 @@
+Q1] Deoxyribonucleic acid, DNA is the primary information storage molecule in biological systems. It is composed of four nucleic acid bases Guanine ('G'), Cytosine ('C'), Adenine ('A'), and Thymine ('T').
+
+Ribonucleic acid, RNA, is the primary messenger molecule in cells. RNA differs slightly from DNA its chemical structure and contains no Thymine. In RNA Thymine is replaced by another nucleic acid Uracil ('U').
+
+Create a function which translates a given DNA string into RNA.
+
+For example:
+
+"GCAT"  =>  "GCAU"
+
+Solutions-
+function DNAtoRNA(dna) {
+  // create a function which returns an RNA sequence from the given DNA sequence
+  return dna.replace(/T/g, 'U');
+  
+   return dna.split('T').join('U');
+}
+
+Q2] Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
+
+Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.
+
+Example:
+n= 5, m=5: 25
+n=-5, m=5:  0
+
+Solutions-
+
+function paperwork(n, m) {
+  return n > 0 && m > 0 ? n * m : 0;
+  
+   return Math.max(n,0) * Math.max(m,0);
+}
+
+Q3] Let's play! You have to return which player won! In case of a draw return Draw!.
+
+Examples:
+
+rps('scissors','paper') // Player 1 won!
+rps('scissors','rock') // Player 2 won!
+rps('paper','paper') // Draw!
+
+Solutions
+const rps = (p1, p2) => {
+  if (p1 === p2 ) {
+    return 'Draw!'
+  }
+    
+  const scenarios = {
+    paper: 'scissors',
+    rock: 'paper',
+    scissors: 'rock'
+  }
+  
+  return scenarios[p1] === p2 ? 'Player 2 won!' : 'Player 1 won!'  
+};
+
+const rps = (p1, p2) => {
+   if (p1 === p2 ) {
+    return 'Draw!'
+  }
+  return `Player ${/paperscissors|rockpaper|scissorsrock/.test(p1 + p2) ? 2 : 1 } won!`;
+};
+
+
+Q4] Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
+
+Solution-
+function greet(name){
+  //your code here
+  return `Hello, ${name} how are you doing today?`
+}
+
+Q5] There was a test in your class and you passed it. Congratulations!
+But you're an ambitious person. You want to know if you're better than the average student in your class.
+
+You receive an array with your peers' test scores. Now calculate the average and compare your score!
+
+Return True if you're better, else False!
+
+Solution-
+function betterThanAverage(classPoints, yourPoints) {
+  // Your code here
+  return yourPoints > (classPoints.reduce((a,c) => a + c) / classPoints.length);
+}
+
+

@@ -1,0 +1,61 @@
+Q1] Nathan loves cycling.
+
+Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+
+You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+For example:
+
+time = 3 ----> litres = 1
+
+time = 6.7---> litres = 3
+
+time = 11.8--> litres = 5
+
+Solution- 
+
+function litres(time) {
+  // 1:
+  return Math.floor(time/2);
+  
+  //2:
+  return parseInt(time/2);
+}
+
+Q2] Convert number to reversed array of digits
+Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+Example:
+348597 => [7,9,5,8,4,3]
+
+Solution-
+
+function digitize(n) {
+  //1:
+  return n?[n%10,...digitize(parseInt(n/10))]:[]; 
+  //2:
+  //return String(n).split('').reverse().map(Number);
+}
+
+Q3] Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+
+The output should be two capital letters with a dot separating them.
+
+It should look like this:
+
+Sam Harris => S.H
+
+Patrick Feeney => P.F
+
+Solution-
+function abbrevName(name){
+    // 1:
+   return (name[0] + '.' + name[name.indexOf(' ')+1]).toUpperCase();
+
+  //2:
+  //return name.split(' ')[0][0].toUpperCase() + '.' + name.split(' ')[1][0].toUpperCase()
+  
+   // 3:
+  return name .split(' ').map(n => n[0].toUpperCase()).join('.');
+}
+
