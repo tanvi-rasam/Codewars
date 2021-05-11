@@ -1,0 +1,111 @@
+Q1] Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+
+The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+
+Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+
+Example:
+
+  Let P be the Principal = 1000.00      
+  Let I be the Interest Rate = 0.05      
+  Let T be the Tax Rate = 0.18      
+  Let D be the Desired Sum = 1100.00
+
+
+After 1st Year -->
+  P = 1041.00
+After 2nd Year -->
+  P = 1083.86
+After 3rd Year -->
+  P = 1128.30
+  
+  Solution-
+  
+function calculateYears(principal, interest, tax, desired) {
+    // your code
+  return principal < desired ? 1 + calculateYears(principal + principal * interest * ( 1 - tax), interest, tax, desired ) : 0;
+}
+
+Q2] Create a function that returns the name of the winner in a fight between two fighters.
+
+Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+
+Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+
+Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+
+Example:
+function Fighter(name, health, damagePerAttack) {
+        this.name = name;
+        this.health = health;
+        this.damagePerAttack = damagePerAttack;
+        this.toString = function() { return this.name; }
+}
+
+Solution-
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  return fighter1.health >=0 && fighter2.health >= 0 
+               ? (firstAttacker === fighter1.name ? (
+                                                    fighter2.health -= fighter1.damagePerAttack,
+                                                    declareWinner(fighter1, fighter2, fighter2.name))
+                                                 : (
+                                                    fighter1.health -= fighter2.damagePerAttack,
+                                                    declareWinner(fighter1, fighter2, fighter1.name))
+                                                  )
+                : (fighter1.health <=0 ? fighter2.toString() : fighter1.toString());
+                
+            
+                                                  
+                                                    
+}
+
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  const acttackReqToDefeatFighter1 = Math.ceil(fighter1.health / fighter2.damagePerAttack);
+  const acttackReqToDefeatFighter2 = Math.ceil(fighter2.health / fighter1.damagePerAttack);
+  return acttackReqToDefeatFighter1 < acttackReqToDefeatFighter2 ? fighter2.toString() 
+                                    : acttackReqToDefeatFighter1 === acttackReqToDefeatFighter2 
+                                            ? firstAttacker
+                                            : fighter1.toString() ;
+                                              
+}
+
+Q3] In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+
+Examples:
+
+1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+
+Solution
+function dontGiveMeFive(start, end)
+{  var count = 0;
+   for (var i = start; i<= end ; i += 1) {
+     if (!i.toString().includes('5')) {
+       count += 1;
+     }
+   }
+   return count;
+}
+
+Q4] You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+
+Complete the method which accepts such an array, and returns that single different number.
+
+The input array will always be valid! (odd-length >= 3)
+
+Examples
+[1, 1, 2] ==> 2
+[17, 17, 3, 17, 17, 17, 17] ==> 3
+
+Solution-
+function stray(numbers) {
+  let max = Math.max(...numbers);
+  let min = Math.min(...numbers);
+  return numbers.filter(x => x == max).length == 1 ? max : min;
+}
+
+function stray(numbers) {
+  let sorted = numbers.sort();
+  return sorted[0] != sorted[1] ? sorted[0] : sorted[sorted.length - 1];
+}
