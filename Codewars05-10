@@ -1,0 +1,81 @@
+Q1] Your task is to write a function which returns the sum of following series upto nth term(parameter).
+
+Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+
+Solution-
+function SeriesSum(n)
+{
+//   console.log([...Array(n + 1).keys()])
+  return [...Array(n + 1).keys()].reduce((a,c,i) => a + 1/(c + (i-1) * 2 )).toFixed(2) + '';
+}
+
+Q2] Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+Examples
+"This is an example!" ==> "sihT si na !elpmaxe"
+"double  spaces"      ==> "elbuod  secaps"
+
+Solution-
+function reverseWords(str) {
+  // Go for it
+  return str.split(' ').map(x => x.split('').reverse().join('')).join(' ');
+}
+
+Q3] Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+
+Don't change the order of the elements that are left.
+
+Examples
+removeSmallest([1,2,3,4,5]) = [2,3,4,5]
+removeSmallest([5,3,2,1,4]) = [5,3,2,4]
+removeSmallest([2,2,1,2,1]) = [2,2,2,1]
+
+Solution- 
+function removeSmallest(numbers) {
+  return removeByIndex(numbers, numbers.indexOf(Math.min(...numbers)));
+}
+
+function removeByIndex(array, index) {
+  return array.filter(function (el, i) {
+    return index !== i;
+  });
+}
+
+Q4] Given a list of integers, determine whether the sum of its elements is odd or even.
+
+Give your answer as a string matching "odd" or "even".
+
+If the input array is empty consider it as: [0] (array with a zero).
+
+Examples:
+Input: [0]
+Output: "even"
+
+Input: [0, 1, 4]
+Output: "odd"
+
+Input: [0, -1, -5]
+Output: "even"
+
+Solution-
+function oddOrEven(array) {
+   //enter code here
+  return array.reduce((a,c) => a + c, 0) % 2 ? 'odd' : 'even';
+}
+
+Q5] Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+Examples:
+
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+
+solution
+function solution(str, ending){
+  // TODO: complete
+  return ending ? str.slice(-ending.length) === ending : true;
+}
+
+function solution(str, ending){
+  return str.endsWith(ending);
+}
