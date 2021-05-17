@@ -1,0 +1,119 @@
+Q1] In the following 10 digit number:
+
+1234567890
+67890 is the greatest sequence of 5 consecutive digits.
+
+Complete the solution so that it returns the greatest sequence of five consecutive digits found within the number given. The number will be passed in as a string of only digits. It should return a five digit integer. The number passed may be as large as 1000 digits.
+
+Solution-
+function solution(digits){
+  return [...digits].reduce((combination,curr, i) => Math.max(combination, digits.slice(i, i + 5)));
+}
+
+Q2] Your task is to make function, which returns the sum of a sequence of integers.
+
+The sequence is defined by 3 non-negative values: begin, end, step.
+
+If begin value is greater than the end, function should returns 0
+
+Examples
+
+sequenceSum(2,2,2) === 2
+sequenceSum(2,6,2) === 12 // 2 + 4 + 6
+sequenceSum(1,5,1) === 15 // 1 + 2 + 3 + 4 + 5
+sequenceSum(1,5,3) === 5 // 1 + 4
+
+Solution-
+const sequenceSum = (begin, end, step) => {
+  // May the Force be with you
+  var sum = 0;
+  for (var i = begin; i <= end; i += step) {
+    sum += i;
+  }
+  return sum;
+};
+
+const sequenceSum = (begin, end, step) => {
+  return begin <= end ? begin + sequenceSum(begin + step, end, step) : 0;
+};
+
+Q3] Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them.
+
+a and b will both be positive integers, and a will always be the first number in the operation, and b always the second.
+
+The four operators are "add", "subtract", "divide", "multiply".
+
+A few examples:
+
+arithmetic(5, 2, "add")      => returns 7
+arithmetic(5, 2, "subtract") => returns 3
+arithmetic(5, 2, "multiply") => returns 10
+arithmetic(5, 2, "divide")   => returns 2.5
+
+Solution-
+function arithmetic(a, b, operator){
+  switch(operator) {
+      case 'add':
+        return a + b;
+      
+      case 'subtract':
+        return a - b;
+      
+      case 'multiply':
+        return a * b;
+      
+      case 'divide':
+        return a / b;
+      
+      default:
+        return 0;
+      
+  }
+}
+
+function arithmetic(a, b, operator){
+  return {
+    'add': a + b, 
+    'subtract': a - b, 
+    'multiply': a * b, 
+    'divide': a / b, 
+  }[operator]
+}
+
+Q4] Your task is to write function findSum.
+
+Upto and including n, this function will return the sum of all multiples of 3 and 5.
+
+For example:
+
+findSum(5) should return 8 (3 + 5)
+
+findSum(10) should return 33 (3 + 5 + 6 + 9 + 10)
+
+Solution-
+function findSum(n) {
+  return [...new Array(n + 1).keys()].reduce((a,c) => (c % 3 === 0 || c % 5 === 0) ? (a + c) : a + 0);
+}
+
+Q5] You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+
+Find max(abs(length(x) − length(y)))
+
+If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+
+Example:
+a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+mxdiflg(a1, a2) --> 13
+
+Solution-
+function mxdiflg(a1, a2) {
+   if (a1.length === 0 || a2.length === 0){
+     return -1;
+   }
+   const strLengthsA1 = a1.map(a => a.length);
+   const strLengthsA2 = a2.map(a => a.length);
+   const diff1 = Math.max(...strLengthsA1) - Math.min(...strLengthsA2);
+   const diff2 = Math.max(...strLengthsA2) - Math.min(...strLengthsA1); 
+  return diff1 >= diff2 ? diff1 : diff2;
+}
