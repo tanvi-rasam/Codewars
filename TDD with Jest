@@ -1,0 +1,51 @@
+Test Driven Development-
+
+TDD is a programming technique.
+Here we think through the design or requirements before getting down to write actual code. 
+
+Simply put, the steps into TDD are as follows:
+-Red
+Add a quick test — Basically just enough code to fail.
+Run the test — It should fail.
+- Green
+Write functional code so as to pass the test.
+Finally, run the test to check whether it has passed.
+-Refactor
+Re-factor until tests PASS to continue with further development/ optimized code.
+
+
+TDD = TFD + refactoring.
+
+For a programmer taking the TDD approach, refuses to write any functional code unless there is a corresponding test that defines that particular functionality, is present and that FAILS because the particular function defining that feature/functionality is not yet present. Once the test is in place, only then shall we write our functional code to ensure the test passes.
+
+
+JEST- a JavaScript testing framework 
+
+Step 1: Setting up the environment.
+
+You need Node.js installed to use the npm package installer. In your vscode terminal enter the following commands:
+
+>npm init -y (This will stay with the defaults and create a package.json file)
+>npm i -D jest (This will install JEST as a Dependency)
+
+Once the installation is complete we need to go to the package.json file and under scripts, we change the value of “test” to “jest”.
+
+Now we create 2 files -
+1. app.js
+2. app.test.js
+
+
+Step 2: We start with the app.test.js
+
+Write the related test cases here
+make use of functios like- expect(), toContain(), etc
+
+Step 3: Run the test. > npm test
+Test should fail
+
+Step 4: Now write the functional code to make the tests pass!
+
+Step 5: Now run the tests again using- > npm test
+
+Step 6: Refactoring our functional code:
+

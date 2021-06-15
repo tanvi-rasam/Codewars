@@ -1,0 +1,92 @@
+Q1] You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement a function likes :: [String] -> String, which must take in input array, containing the names of people who like an item. It must return the display text as shown in the examples:
+
+likes [] -- must be "no one likes this"
+likes ["Peter"] -- must be "Peter likes this"
+likes ["Jacob", "Alex"] -- must be "Jacob and Alex like this"
+likes ["Max", "John", "Mark"] -- must be "Max, John and Mark like this"
+likes ["Alex", "Jacob", "Mark", "Max"] -- must be "Alex, Jacob and 2 others like this"
+
+Solution-
+
+function likes(names) {
+  
+  switch (names.length) {
+      case 0:
+        return 'no one likes this';
+      case 1:
+        return `${names[0]} likes this`;
+      case 2:
+        return `${names[0]} and ${names[1]} like this`;
+      case 3:
+        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+      default:
+        return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+  }
+}
+
+Q2] Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+For example:
+
+ persistence(39) === 3 // because 3*9 = 27, 2*7 = 14, 1*4=4
+                       // and 4 has only one digit
+                 
+ persistence(999) === 4 // because 9*9*9 = 729, 7*2*9 = 126,
+                        // 1*2*6 = 12, and finally 1*2 = 2
+                  
+ persistence(4) === 0 // because 4 is already a one-digit number
+ 
+ Solution-
+ 
+ function persistence(num) {
+   if (num < 10) {
+     return 0
+   }
+  
+  return 1 + persistence(num.toString().split('').reduce((a,c) => a * +c));
+}
+
+Q3] Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+
+Solution-
+function duplicateCount(text){
+  var dict = {};
+  var count = 0;
+  
+  text.toUpperCase().split('').forEach(x => dict[x] = dict[x] ? dict[x] + 1 : 1);
+  
+  Object.keys(dict).forEach(key => count += dict[key] > 1 ? 1 : 0);
+  
+  return count;
+}
+
+Q4] You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+
+Examples
+[2, 4, 0, 100, 4, 11, 2602, 36]
+Should return: 11 (the only odd number)
+
+[160, 3, 1719, 19, 11, 13, -21]
+Should return: 160 (the only even number)
+
+Solution
+function findOutlier(integers){
+  const even = integers.filter(x => x % 2 === 0);
+  const odd = integers.filter(x => x % 2 !== 0);
+  
+  return even.length > 1 ? odd[0] : even[0];
+}
+
+

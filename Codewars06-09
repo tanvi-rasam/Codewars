@@ -1,0 +1,58 @@
+Q1] Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
+
+When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+
+Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+
+S is misinterpreted as 5
+O is misinterpreted as 0
+I is misinterpreted as 1
+The test cases contain numbers only by mistake.
+
+Solution-
+
+function correct(string)
+{
+	return string.split('').map(x => {return {'5': 'S', '0': 'O', '1': 'I'}[x] || x}).join('');
+}
+
+function correct(string)
+{
+  const mistakes = {'5': 'S', '0': 'O', '1': 'I'};
+	return string.replace(/[501]/g, x => mistakes[x])
+}
+
+Q2] In this simple exercise, you will create a program that will take two lists of integers, a and b. Each list will consist of 3 positive integers above 0, representing the dimensions of cuboids a and b. You must find the difference of the cuboids' volumes regardless of which is bigger.
+
+For example, if the parameters passed are ([2, 2, 3], [5, 4, 1]), the volume of a is 12 and the volume of b is 20. Therefore, the function should return 8.
+
+Your function will be tested with pre-made examples as well as random ones.
+
+If you can, try writing it in one line of code.
+
+Solution-
+
+function findDifference(a, b) {
+  return Math.abs(
+            a.reduce((acc, c) => acc * c) - 
+            b.reduce((acc, c) => acc * c)
+  );
+}
+
+Q3] Implement a function named generateRange(min, max, step), which takes three arguments and generates a range of integers from min to max, with the step. The first integer is the minimum value, the second is the maximum of the range and the third is the step. (min < max)
+
+Task
+Implement a function named
+
+generateRange(2, 10, 2) // should return array of [2,4,6,8,10]
+generateRange(1, 10, 3) // should return array of [1,4,7,10]
+Note
+min < max
+step > 0
+the range does not HAVE to include max (depending on the step)
+
+Solution-
+
+function generateRange(min, max, step){
+  return min > max ? [] : [min, ...generateRange(min + step, max, step)];
+}

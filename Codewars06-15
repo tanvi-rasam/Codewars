@@ -1,0 +1,60 @@
+Q1] You are given a program sumSquares that takes an array as input and returns the sum of the squares of each item in an array. For example:
+
+sumSquares([1,2,3,4,5]) === 55 // 1 ** 2 + 2 ** 2 + 3 ** 2 + 4 ** 2 + 5 ** 2
+sumSquares([7,3,9,6,5]) === 200
+sumSquares([11,13,15,18,2]) === 843
+Shorten the code such that it meets the requirements.
+
+Solution-
+function sumSquares(array) {
+  return array.reduce((a,c) => a + c ** 2, 0);
+}
+
+Q2] Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+
+Return your answer as a number.
+
+Solution-
+function sumMix(x){
+  return x.reduce((a,c) => a + (typeof c === 'string' ? +c : c), 0);
+}
+
+function sumMix(x){
+  return x.reduce((a,c) => a + +c, 0);
+}
+
+Q3] Create a function with two arguments that will return an array of the first (n) multiples of (x).
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array (or list in Python, Haskell or Elixir).
+
+Examples:
+
+countBy(1,10) === [1,2,3,4,5,6,7,8,9,10]
+countBy(2,5) === [2,4,6,8,10]
+
+
+Solution-
+
+function countBy(x, n) {
+  return [... new Array(n)].map((_ , idx) => x * (idx + 1));
+}
+
+
+Q4] Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flowers has an even number of petals and the other has an odd number of petals it means they are in love.
+
+Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't.
+
+Solution-
+
+function lovefunc(flower1, flower2){
+  return (flower1 % 2 === 0) && (flower2 % 2 !== 0) ||
+         (flower1 % 2 !== 0) && (flower2 % 2 === 0)
+}
+
+function lovefunc(flower1, flower2){
+  return (flower1 + flower2) % 2 === 1
+}
+
+

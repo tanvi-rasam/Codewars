@@ -1,0 +1,67 @@
+Q1] Your function will be called char_freq/charFreq/CharFreq and you will get passed a string, you will then return a dictionary (object in JavaScript) with as keys the characters, and as values how many times that character is in the string. You can assume you will be given valid input.
+
+Example
+charFreq("I like cats") // Returns {'a': 1, ' ': 2, 'c': 1, 'e': 1, 'I': 1, 'k': 1, 'l': 1, 'i': 1, 's': 1, 't': 1}
+
+Solution-
+
+function charFreq(message) {
+  return message.split('').reduce((a,c) => (a[c] = a[c] ? a[c] + 1 : 1) && a, {});
+}
+
+
+Q2] It is easy to join two strings together like this string1 + string2.
+
+Another way to get the desired result would be with string1.concat(string2)
+
+ES6 has introduced another way of joining strings. Your task is to find out what this is and write a function that will add two strings together, there must be a space between the two strings.
+
++ , .concat() & .join() will not be allowed in this exercise. I have also removed some other methods that can be used to cheat!
+
+If one of the arguments is a number your code must coerce it into being a string.
+
+Solution-
+
+function joinStrings(string1, string2){
+   return `${string1} ${string2}`;
+}
+
+
+Q3] Coding in function cutIt, function accept 1 parameter:arr. arr is a string array.
+
+The first mission: Traversing arr, find the shortest string length.
+
+The second mission: Traversing arr again, intercept all strings to the shortest string length(Start from index0). you can use one of slice() substring() or substr() do it. return the result after finished the work.
+
+for example:
+
+cutIt(["ab","cde","fgh"]) should return ["ab","cd","fg"]
+cutIt(["abc","defgh","ijklmn"]) should return ["abc","def","ijk"]
+cutIt(["codewars","javascript","java"]) should return ["code","java","java"]
+
+Solution-
+function cutIt(arr){
+  const shortestLength =  [...arr].sort((a,b) => a.length - b.length)[0].length;
+  return arr.map(x => x.substr(0,shortestLength));
+  
+}
+
+
+Q4] Coding in function firstToLast, function accept 2 parameters:str and c. str is a string. c is a char.
+
+Please return the gap between the first position of c and the last position of c.
+
+If there are a lot of c in the str, should return a positive integer; If there is only one c in str, should return 0; If there is no c in the str, should return -1. Retrieval should not ignored the case.
+
+for example:
+
+firstToLast("ababc","a") should return 2(2-0)
+firstToLast("ababc","c") should return 0(4-4)
+firstToLast("ababc","d") should return -1
+
+Solution-
+
+function firstToLast(str,c){
+  return str.search(c) >= 0 ? str.lastIndexOf(c) - str.indexOf(c) : -1;
+  
+}
