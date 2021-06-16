@@ -1,0 +1,63 @@
+Q1] Your task is to create functionisDivideBy (or is_divide_by) to check if an integer number is divisible by each out of two arguments.
+
+A few cases:
+
+
+(-12, 2, -6)  ->  true
+(-12, 2, -5)  ->  false
+
+(45, 1, 6)    ->  false
+(45, 5, 15)   ->  true
+
+(4, 1, 4)     ->  true
+(15, -5, 3)   ->  true
+
+Solution-
+
+function isDivideBy(number, a, b) {
+  return number % a === 0 && number % b === 0;
+}
+
+Q2] Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+
+doubleChar("String") ==> "SSttrriinngg"
+
+doubleChar("Hello World") ==> "HHeelllloo  WWoorrlldd"
+
+doubleChar("1234!_ ") ==> "11223344!!__  "
+
+Solution-
+
+
+function doubleChar(str) {
+  return str.split('').map(x => x + x).join('');
+}
+
+function doubleChar(str) {
+  return str.replace(/(.)/g, "$1$1")
+}
+
+Q3] Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+
+Example:
+
+["Keep", "Remove", "Keep", "Remove", "Keep", ...] --> ["Keep", "Keep", "Keep", ...]
+None of the arrays will be empty, so you don't have to worry about that!
+
+Solution-
+
+function removeEveryOther(arr){
+  return arr.filter((_,idx) => idx % 2 === 0);
+}
+
+Q4] All of the animals are having a feast! Each animal is bringing one dish. There is just one rule: the dish must start and end with the same letters as the animal's name. For example, the great blue heron is bringing garlic naan and the chickadee is bringing chocolate cake.
+
+Write a function feast that takes the animal's name and dish as arguments and returns true or false to indicate whether the beast is allowed to bring the dish to the feast.
+
+Assume that beast and dish are always lowercase strings, and that each has at least two letters. beast and dish may contain hyphens and spaces, but these will not appear at the beginning or end of the string. They will not contain numerals.
+
+Solution-
+function feast(beast, dish) {
+    return beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1];
+}
+
